@@ -79,6 +79,7 @@ const config = {
         // 提取出出现多次但是没有定义成变量去引用的静态值
         reduce_vars: true,
       },
+      sourceMap: true,
     }),
     // 压缩JS
 
@@ -89,6 +90,25 @@ const config = {
       inject: 'body',
     }),
     // HTML模板
+
+
+    new webpack.optimize.CommonsChunkPlugin({ // 抽离js中公共的部分并合并到一个文件里
+      name: 'vendor',
+      minChunks(module) {
+        // any required modules inside node_modules are extracted to vendor
+        return (
+          module.resource &&
+          /\.js$/.test(module.resource) &&
+          module.resource.indexOf(
+            path.join(__dirname, '../node_modules')
+          ) === 0
+        );
+      },
+    }),
+    new webpack.optimize.CommonsChunkPlugin({ // 每次打包但是公共js部分没变的情况下不触发更新这个公共js文件
+      name: 'manifest',
+      chunks: ['vendor'],
+    }),
   ],
   devServer: {
     host: 'localhost',
