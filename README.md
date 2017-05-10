@@ -1,3 +1,5 @@
 ## Ezio Website
 
-a personal website for seraph ezio
+My personal website wahahaha!
+
+[Go To Hello World](https://eziow.github.io/Seraph).
