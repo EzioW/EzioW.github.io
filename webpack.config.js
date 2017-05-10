@@ -11,7 +11,7 @@ const config = {
     ],
   },
   output: {
-    path: path.join(__dirname, '/dist/'),
+    path: path.join(__dirname, '/Seraph/'),
     filename: '[name].[hash].bundle.js',
     publicPath: '/',
   },
@@ -63,7 +63,7 @@ const config = {
       minimize: true,
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(['Seraph']),
     new webpack.optimize.UglifyJsPlugin({
       beautify: false,
       comments: false,
@@ -78,7 +78,7 @@ const config = {
 
     new HtmlWebpackPlugin({
       title: 'Personal Website',
-      template: './index.html',
+      template: './src/index.html',
       inject: 'body',
     }),
 
