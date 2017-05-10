@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 const config = {
   entry: {
@@ -92,22 +93,29 @@ const config = {
     // HTML模板
 
 
-    new webpack.optimize.CommonsChunkPlugin({ // 抽离js中公共的部分并合并到一个文件里
-      name: 'vendor',
-      minChunks(module) {
-        // any required modules inside node_modules are extracted to vendor
-        return (
-          module.resource &&
-          /\.js$/.test(module.resource) &&
-          module.resource.indexOf(
-            path.join(__dirname, '../node_modules')
-          ) === 0
-        );
-      },
-    }),
-    new webpack.optimize.CommonsChunkPlugin({ // 每次打包但是公共js部分没变的情况下不触发更新这个公共js文件
-      name: 'manifest',
-      chunks: ['vendor'],
+    // new webpack.optimize.CommonsChunkPlugin({ // 抽离js中公共的部分并合并到一个文件里
+    //   name: 'vendor',
+    //   minChunks(module) {
+    //     // any required modules inside node_modules are extracted to vendor
+    //     return (
+    //       module.resource &&
+    //       /\.js$/.test(module.resource) &&
+    //       module.resource.indexOf(
+    //         path.join(__dirname, '../node_modules')
+    //       ) === 0
+    //     );
+    //   },
+    // }),
+    // new webpack.optimize.CommonsChunkPlugin({ // 每次打包但是公共js部分没变的情况下不触发更新这个公共js文件
+    //   name: 'manifest',
+    //   chunks: ['vendor'],
+    // }),
+    new CompressionPlugin({
+      asset: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: /\.(js|html)$/,
+      threshold: 10240,
+      minRatio: 0.8,
     }),
   ],
   devServer: {
