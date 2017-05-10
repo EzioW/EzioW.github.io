@@ -11,7 +11,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        Hello World!
+        Hello World!!
       </div>
     );
   }
