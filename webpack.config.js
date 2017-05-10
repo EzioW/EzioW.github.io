@@ -13,7 +13,7 @@ const config = {
   output: {
     path: path.join(__dirname, '/Seraph/'),
     filename: '[name].[hash].bundle.js',
-    publicPath: '/',
+    publicPath: './',
   },
   module: {
     rules: [
