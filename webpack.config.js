@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
-const CompressionPlugin = require('compression-webpack-plugin');
 
 const config = {
   entry: {
@@ -14,9 +14,7 @@ const config = {
     path: path.join(__dirname, '/dist/'),
     filename: '[name].[hash].bundle.js',
     publicPath: '/',
-    sourceMapFilename: '[name].map',
   },
-  devtool: 'eval-source-map',
   module: {
     rules: [
       {
@@ -37,9 +35,7 @@ const config = {
             },
           },
           'postcss-loader',
-          {
-            loader: 'less-loader',
-          },
+          'less-loader',
         ],
       },
       {
@@ -62,60 +58,46 @@ const config = {
     ],
   },
   plugins: [
-    // new webpack.NamedModulesPlugin(),
-    //
+    new webpack.DefinePlugin({
+      sourceMap: true,
+      minimize: true,
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
+    new CleanWebpackPlugin(['dist']),
     new webpack.optimize.UglifyJsPlugin({
-      // 最紧凑的输出
       beautify: false,
-      // 删除所有的注释
       comments: false,
       compress: {
-        // 在UglifyJs删除没有用到的代码时不输出警告
         warnings: false,
-        // 删除所有的 `console` 语句
-        // 还可以兼容ie浏览器
         drop_console: true,
-        // 内嵌定义了但是只用到一次的变量
         collapse_vars: true,
-        // 提取出出现多次但是没有定义成变量去引用的静态值
         reduce_vars: true,
       },
       sourceMap: true,
     }),
-    // 压缩JS
 
     new HtmlWebpackPlugin({
       title: 'Personal Website',
-      template: './src/index.html',
-      // hash: true,
+      template: './index.html',
       inject: 'body',
     }),
-    // HTML模板
 
-
-    // new webpack.optimize.CommonsChunkPlugin({ // 抽离js中公共的部分并合并到一个文件里
-    //   name: 'vendor',
-    //   minChunks(module) {
-    //     // any required modules inside node_modules are extracted to vendor
-    //     return (
-    //       module.resource &&
-    //       /\.js$/.test(module.resource) &&
-    //       module.resource.indexOf(
-    //         path.join(__dirname, '../node_modules')
-    //       ) === 0
-    //     );
-    //   },
-    // }),
-    // new webpack.optimize.CommonsChunkPlugin({ // 每次打包但是公共js部分没变的情况下不触发更新这个公共js文件
-    //   name: 'manifest',
-    //   chunks: ['vendor'],
-    // }),
-    new CompressionPlugin({
-      asset: '[path].gz[query]',
-      algorithm: 'gzip',
-      test: /\.(js|html)$/,
-      threshold: 10240,
-      minRatio: 0.8,
+    new webpack.optimize.CommonsChunkPlugin({ // 抽离js中公共的部分并合并到一个文件里
+      name: 'vendor',
+      minChunks(module) {
+        // any required modules inside node_modules are extracted to vendor
+        return (
+          module.resource &&
+          /\.js$/.test(module.resource) &&
+          module.resource.indexOf(
+            path.join(__dirname, '../node_modules')
+          ) === 0
+        );
+      },
+    }),
+    new webpack.optimize.CommonsChunkPlugin({ // 每次打包但是公共js部分没变的情况下不触发更新这个公共js文件
+      name: 'manifest',
+      chunks: ['vendor'],
     }),
   ],
   devServer: {
