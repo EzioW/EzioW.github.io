@@ -25,7 +25,7 @@ const config = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(css|less)$/,
+        test: /\.(css|less|scss)$/,
         use: [
           'style-loader',
           {
@@ -35,6 +35,7 @@ const config = {
             },
           },
           'postcss-loader',
+          'sass-loader',
           'less-loader',
         ],
       },

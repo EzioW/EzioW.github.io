@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'antd';
 
-import './style.less';
+import './style.scss';
 
 class CSSGrid extends Component {
   constructor(props) {
@@ -47,7 +47,7 @@ class CSSGrid extends Component {
       key: 3,
       proptype: 'grid-template-rows',
       value: '[row x height], xfr',
-      default: 'init',
+      default: '',
     }, {
       key: 4,
       proptype: 'grid-area',
@@ -87,8 +87,6 @@ class CSSGrid extends Component {
   }
 
   render() {
-    const tip = `为啥不能这行呢！
-    为啥不信个！？！？`;
     const className = this.props.className;
     return (
       <div className={`${className} css-grid`}>
