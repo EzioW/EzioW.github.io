@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import CSSGrid from 'component/Grid';
+import './style.less';
 
 class Home extends Component {
   constructor(props) {
@@ -11,7 +13,8 @@ class Home extends Component {
   render() {
     return (
       <div>
-        Hello World!
+        <span style={{ fontSize: 24 }}>Try Something New</span>&emsp;<span>(main with grid layout)</span>
+        <CSSGrid />
       </div>
     );
   }

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --hot",
-    "build": "node build.js"
+    "pro": "webpack build.js --progress"
   },
   "keywords": [],
   "author": "",
@@ -36,6 +36,7 @@
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-hot-loader": "^3.0.0-beta.6"
+    "react-hot-loader": "^3.0.0-beta.6",
+    "react-router-dom": "^4.1.1"
   }
 }
