@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Table, Input } from 'antd';
+import Title from 'component/ModuleTitle';
 
 import './style.scss';
 
@@ -141,13 +141,13 @@ class CSSGrid extends Component {
   }
 
   render() {
-    const className = this.props.className;
-
     const state = this.state;
     return (
-      <div className={`${className} css-grid`}>
-        <div style={{ fontSize: 24 }}>Try Something New</div>
-        <span>(main with grid layout)</span>
+      <div className="css-grid">
+        <Title
+          mainTitle="Try Something New"
+          subTitle="main with grid layout"
+        />
         <div className="grid-wrapper">
           <div className="view">
             <div
@@ -178,14 +178,5 @@ class CSSGrid extends Component {
     );
   }
 }
-
-CSSGrid.propTypes = {
-  className: PropTypes.string,
-};
-
-
-CSSGrid.defaultProps = {
-  className: '',
-};
 
 export default CSSGrid;

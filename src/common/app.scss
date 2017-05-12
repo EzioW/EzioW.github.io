@@ -33,10 +33,13 @@
   border-radius: 6px;
   position: absolute;
   top: 64px;
+  bottom: 64px;
   left: 0;
   right: 0;
   margin: 24px;
   padding: 24px;
+  padding-top: 0;
+  opacity: 0.95;
   z-index: 1;
 }
 .app-footer {
@@ -45,4 +48,12 @@
   position: fixed;
   bottom: 0;
   width: 100%;
+  z-index: 10;
+}
+
+.seraph-panel {
+  background: #d9d9d9;
+  border-radius: 4px;
+  margin-bottom: 24px;
+  border: 0;
 }
