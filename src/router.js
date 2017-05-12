@@ -31,6 +31,9 @@ const menu = [
       title: 'Webpack',
     }],
   },
+  {
+    title: 'Tips',
+  },
 ];
 const routes = [
   { path: '/',

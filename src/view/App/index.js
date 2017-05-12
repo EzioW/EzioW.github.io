@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Route,
   Link,
 } from 'react-router-dom';
@@ -41,7 +41,12 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
+      <Router
+        basename={'./'}
+        forceRefresh={false}
+        getUserConfirmation={() => {}}
+        keyLength={10}
+      >
         <Layout>
           <Header className="app-header">
             <Menu
