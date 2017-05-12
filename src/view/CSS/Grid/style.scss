@@ -1,18 +1,13 @@
 .css-grid {
-  text-align: left;
   .title {
+    float: left;
     font-size: 18px;
   }
   .grid-wrapper {
     display: flex;
+    margin-top: 16px;
     .view {
       width: 49%;
-      .wrapper {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 10px;
-        grid-auto-rows: minmax(100px, auto);
-      }
       .wrapper div {
         border: 2px solid rgb(233,171,88);
         border-radius: 5px;

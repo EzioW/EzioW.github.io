@@ -2,6 +2,8 @@ import React from 'react';
 
 import Home from './view/home/index.js';
 
+import Grid from './view/CSS/Grid';
+
 const menu = [
   {
     title: 'Home',
@@ -40,9 +42,8 @@ const routes = [
   { path: '/Home',
     main: Home,
   },
-  { path: '/bubblegum',
-    sidebar: () => <div>bubblegum!</div>,
-    main: () => <h2>Bubblegum</h2>,
+  { path: '/Grid',
+    main: Grid,
   },
   { path: '/shoelaces',
     sidebar: () => <div>shoelaces!</div>,

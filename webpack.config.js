@@ -58,7 +58,7 @@ const config = {
       },
     ],
   },
-  devtool: 'cheap-module-source-map',
+  // devtool: 'cheap-module-source-map',
   plugins: [
     new webpack.DefinePlugin({
       sourceMap: true,

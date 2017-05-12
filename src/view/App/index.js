@@ -5,7 +5,7 @@ import {
   Link,
 } from 'react-router-dom';
 import { Layout, Menu, Icon } from 'antd';
-import '../../common/app.less';
+import '../../common/app.scss';
 import { menu, routes } from '../../router';
 
 const { Header, Footer, Content } = Layout;
