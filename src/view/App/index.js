@@ -41,11 +41,7 @@ class App extends Component {
 
   render() {
     return (
-      <Router
-        basename={'/Seraph'}
-        forceRefresh
-        keyLength={12}
-      >
+      <Router>
         <Layout>
           <Header className="app-header">
             <Menu
