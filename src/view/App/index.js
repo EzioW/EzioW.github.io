@@ -41,7 +41,7 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
+      <Router basename="/Seraph">
         <Layout>
           <Header className="app-header">
             <Menu
