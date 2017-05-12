@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Home from './view/home/index.js';
 
 import Grid from './view/CSS/Grid';
@@ -39,15 +37,8 @@ const routes = [
     exact: true,
     main: Home,
   },
-  { path: '/Home',
-    main: Home,
-  },
   { path: '/Grid',
     main: Grid,
-  },
-  { path: '/shoelaces',
-    sidebar: () => <div>shoelaces!</div>,
-    main: () => <h2>Shoelaces</h2>,
   },
 ];
 
