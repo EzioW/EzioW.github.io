@@ -51,5 +51,7 @@ ins {
 pre {
   background-color: #171717;
   color: #8bd3ff;
+  border-radius: 6px;
   text-align: left;
+  padding: 8px;
 }

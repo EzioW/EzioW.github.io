@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Table, Collapse, Input, Icon, Button } from 'antd';
+import Title from 'component/ModuleTitle';
 
 import './style.scss';
 
@@ -132,6 +133,7 @@ class Tips extends Component {
   render() {
     return (
       <div className="tip-wrapper">
+        <Title mainTitle="Some Tips" />
         <Collapse bordered={false} style={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}>
           <Panel header={'DOC Url'} className="seraph-panel">
             <Table columns={this.getDocColumns()} dataSource={this.state.DocData} pagination={false} />
