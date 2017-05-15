@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
-import { Table, Input } from 'antd';
+import { Collapse } from 'antd';
 
 import './style.scss';
 
-class Animate extends Component {
+const Panel = Collapse.Panel;
+
+class CSSAnimate extends Component {
 
   render() {
     return (
-      <div />
+      <div className="css-animate">
+        <Collapse>
+          <Panel></Panel>
+        </Collapse>
+      </div>
     );
   }
 }
 
-export default Animate;
+export default CSSAnimate;
