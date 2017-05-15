@@ -13,7 +13,7 @@ const config = {
   output: {
     path: path.join(__dirname, '/Seraph'),
     filename: '[name].[hash].bundle.js',
-    publicPath: '/',
+    publicPath: './',
   },
   module: {
     rules: [
@@ -71,17 +71,17 @@ const config = {
       inject: 'body',
     }),
     new CleanWebpackPlugin(['Seraph']),
-    // new webpack.optimize.UglifyJsPlugin({
-    //   beautify: false,
-    //   comments: false,
-    //   compress: {
-    //     warnings: false,
-    //     drop_console: true,
-    //     collapse_vars: true,
-    //     reduce_vars: true,
-    //   },
-    //   // sourceMap: true,
-    // }),
+    new webpack.optimize.UglifyJsPlugin({
+      beautify: false,
+      comments: false,
+      compress: {
+        warnings: false,
+        drop_console: true,
+        collapse_vars: true,
+        reduce_vars: true,
+      },
+      // sourceMap: true,
+    }),
 
     new webpack.optimize.CommonsChunkPlugin({ // 抽离js中公共的部分并合并到一个文件里
       name: 'vendor',
