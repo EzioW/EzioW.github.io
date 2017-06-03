@@ -6,6 +6,8 @@ import Grid from './view/CSS/Grid';
 
 import Tips from './view/Tips';
 
+import Tool from './view/Tool';
+
 const menu = [
   {
     title: 'Home',
@@ -36,6 +38,8 @@ const menu = [
     }],
   }, {
     title: 'Tips',
+  }, {
+    title: 'Tool',
   },
 ];
 const routes = [
@@ -50,6 +54,9 @@ const routes = [
   }, {
     path: '/Basic',
     main: Basic,
+  }, {
+    path: '/Tool',
+    main: Tool,
   },
 ];
 
