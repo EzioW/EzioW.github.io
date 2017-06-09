@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Input, Icon, Button } from 'antd';
 import Title from 'component/ModuleTitle';
 
-import './style.scss';
+import './style.less';
 
 class Tool extends Component {
   constructor(props) {

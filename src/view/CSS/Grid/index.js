@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Table, Input } from 'antd';
 import Title from 'component/ModuleTitle';
 
-import './style.scss';
+import './style.less';
 
 class CSSGrid extends Component {
   constructor(props) {

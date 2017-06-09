@@ -2,6 +2,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
+const theme = require('./theme.config.js');
+
+console.log(theme);
 
 const env = process.argv[2] === '--hot' ? 'dev' : 'pro';
 const plugins = [
@@ -81,8 +84,12 @@ const config = {
             },
           },
           'postcss-loader',
-          'sass-loader',
-          'less-loader',
+          {
+            loader: 'less-loader',
+            options: {
+              modifyVars: JSON.stringify(theme),
+            },
+          },
         ],
       },
       {

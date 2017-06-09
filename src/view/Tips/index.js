@@ -3,7 +3,7 @@ import { Table, Collapse, Input, Icon, Button } from 'antd';
 import Title from 'component/ModuleTitle';
 
 import QAData from './QA.json';
-import './style.scss';
+import './style.less';
 
 const Panel = Collapse.Panel;
 

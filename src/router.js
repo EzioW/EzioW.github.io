@@ -1,6 +1,7 @@
 import Home from './view/home/index.js';
 
 import Basic from './view/JS/Basic';
+import FunctionPage from './view/JS/Function';
 
 import Grid from './view/CSS/Grid';
 
@@ -57,6 +58,9 @@ const routes = [
   }, {
     path: '/Tool',
     main: Tool,
+  }, {
+    path: '/Function',
+    main: FunctionPage,
   },
 ];
 

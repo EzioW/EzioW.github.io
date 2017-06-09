@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Collapse } from 'antd';
 
-import './style.scss';
+import './style.less';
 
 const Panel = Collapse.Panel;
 
@@ -11,7 +11,7 @@ class CSSAnimate extends Component {
     return (
       <div className="css-animate">
         <Collapse>
-          <Panel></Panel>
+          <Panel />
         </Collapse>
       </div>
     );

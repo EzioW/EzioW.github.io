@@ -111,12 +111,12 @@ class Basic extends Component {
 
   render() {
     return (
-      <diiv>
+      <div>
         <Title
           mainTitle="Prototype"
           subTitle="Just one pic (picture is taked from an unnamed blog)"
         />
-        <img src={Prototype} />
+        <img src={Prototype} alt="" />
         <Title
           mainTitle="Closures"
           subTitle="Code from Mozilla"
@@ -126,13 +126,15 @@ class Basic extends Component {
           mainTitle="HTTP"
           subTitle="Too many here's some of them usually come up"
         />
-        <Table
-          size="small"
-          pagination={false}
-          columns={this.getColumns()}
-          dataSource={this.getDataSource()}
-        />
-      </diiv>
+        <div className="seraph-panel">
+          <Table
+            size="small"
+            pagination={false}
+            columns={this.getColumns()}
+            dataSource={this.getDataSource()}
+          />
+        </div>
+      </div>
     );
   }
 }
