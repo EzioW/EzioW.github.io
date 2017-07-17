@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button, Input } from 'antd';
+import { Card, Button, Input, InputNumber } from 'antd';
 import GhostFace from 'component/GhostFace';
 import './style.less';
 
@@ -10,6 +10,8 @@ class FunctionPage extends Component {
       showGhost: 0,
       generateID: 0,
       pasteText: '',
+      rate: 5,
+      isPrime: false,
     };
   }
 
@@ -45,8 +47,16 @@ class FunctionPage extends Component {
     });
   }
 
+  handleChageRate = (value) => {
+    this.setState({ rate: value });
+  }
+
+  handleChangePrime = (value) => {
+    this.setState({ isPrime: !(/^.?$|^(..+?)\1+$/).test('1'.repeat(value)) });
+  }
+
   render() {
-    const { showGhost, generateID, pasteText } = this.state;
+    const { showGhost, generateID, pasteText, rate, isPrime } = this.state;
     return (
       <div className="function-wrapper">
         <Card
@@ -68,6 +78,35 @@ class FunctionPage extends Component {
             onPaste={this.handlePaste}
           />
           <GhostFace visible={showGhost === 1} text="Input Word One By One !" />
+        </Card>
+        <Card
+          title="Create Star"
+          className="star"
+        >
+          <InputNumber
+            min={0}
+            max={5}
+            value={rate}
+            onChange={this.handleChageRate}
+            placeholder="input a number"
+          />
+          <div>
+            <br />
+            <span>{'★★★★★☆☆☆☆☆'.slice(5 - rate, 10 - rate)}</span>
+          </div>
+        </Card>
+        <Card
+          title="Test A Number is Prime"
+          className="star"
+        >
+          <InputNumber
+            onChange={this.handleChangePrime}
+            defaultValue={0}
+          />
+          <div>
+            <br />
+            <span>{`${isPrime}`}</span>
+          </div>
         </Card>
       </div>
     );

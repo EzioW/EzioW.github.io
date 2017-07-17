@@ -35,6 +35,7 @@ const plugins = [
     name: 'manifest',
     chunks: ['vendor'],
   }),
+  // new webpack.optimize.ModuleConcatenationPlugin(),
 ];
 
 if (env === 'pro') {

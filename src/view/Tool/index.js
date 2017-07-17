@@ -41,11 +41,7 @@ class Tool extends Component {
             <Button onClick={this.handleTransform}>transform</Button>
           </div>
           <div className="json-str">
-            <Input
-              type="textarea"
-              autosize
-              value={this.state.jsonRes}
-            />
+            <p className="white" dangerouslySetInnerHTML={{ __html: `${this.state.jsonRes}` }} />
           </div>
         </div>
       </div>

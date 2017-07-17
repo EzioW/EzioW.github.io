@@ -1,5 +1,5 @@
 {
-  "name": "webpack-v2.4",
+  "name": "webpack-v3.0",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -33,11 +33,12 @@
     "sass-loader": "^6.0.5",
     "style-loader": "^0.17.0",
     "url-loader": "^0.5.8",
-    "webpack": "^2.4.1",
+    "webpack": "^3.0.0",
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
     "antd": "^2.10.0",
+    "eslint-config-rnx": "^1.0.4",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
