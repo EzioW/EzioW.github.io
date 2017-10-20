@@ -4,8 +4,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 const theme = require('./theme.config.js');
 
-console.log(theme);
-
 const env = process.argv[2] === '--hot' ? 'dev' : 'pro';
 const plugins = [
   new webpack.DefinePlugin({
@@ -21,7 +19,6 @@ const plugins = [
   new webpack.optimize.CommonsChunkPlugin({ // 抽离js中公共的部分并合并到一个文件里
     name: 'vendor',
     minChunks(module) {
-        // any required modules inside node_modules are extracted to vendor
       return (
           module.resource &&
           /\.js$/.test(module.resource) &&
@@ -66,57 +63,42 @@ const config = {
     publicPath: env === 'dev' ? '/' : './',
   },
   module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/,
-        use: [
-          'babel-loader',
-        ],
-        exclude: /node_modules/,
+    rules: [{
+      test: /\.(js|jsx)$/,
+      use: ['babel-loader'],
+      exclude: /node_modules/,
+    }, {
+      test: /\.(css|less|scss)$/,
+      use: [
+        'style-loader',
+        {
+          loader: 'css-loader',
+          options: { importLoaders: 1 },
+        },
+        'postcss-loader',
+        {
+          loader: 'less-loader',
+          options: { modifyVars: JSON.stringify(theme) },
+        }],
+    }, {
+      test: /\.(jpg|png)$/,
+      use: [{
+        loader: 'url-loader',
+        options: { limit: 1024 },
       },
-      {
-        test: /\.(css|less|scss)$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-            },
-          },
-          'postcss-loader',
-          {
-            loader: 'less-loader',
-            options: {
-              modifyVars: JSON.stringify(theme),
-            },
-          },
-        ],
-      },
-      {
-        test: /\.(jpg|png)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 1024,
-            },
-          },
-          // {
-          //   loader: 'file-loader',
-          //   options: {
-          //     name: '[path][name].[hash].[ext]',
-          //   },
-          // },
-        ],
-      },
-    ],
+      // {
+      //   loader: 'file-loader',
+      //   options: {
+      //     name: '[path][name].[hash].[ext]',
+      //   },
+      // },
+      ] }],
   },
   devtool: 'cheap-module-source-map',
   plugins,
   devServer: {
     host: 'localhost',
-    port: 3000,
+    port: 5566,
     historyApiFallback: true, // 不跳转
     hot: true, // 配置HMR之后可以选择开启
     inline: true, // 实时刷新
@@ -128,4 +110,5 @@ const config = {
   },
 
 };
+
 module.exports = config;
